@@ -1,5 +1,28 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## Update (same day): Art's decisions, executed
+
+1. **Shopping cart removed** from the fireplace side (Art's call, 2026-11-12):
+   "Add to Cart" → "Request a Quote", "Request Install Quote" → "Book a
+   Showroom Visit", "Shop Now" → "Request Quote", spec-row "Free shipping /
+   Ships free" → "Included in your quote", prose "ships free (to your door)" →
+   "ships to your door" (drops the free-shipping promise, keeps the delivery
+   fact). 32 files changed; zero cart terms remain outside `pro-tools/`.
+   **Pro-tools "Buy Now" kept intentionally** (ships-nationwide pro corner).
+2. **0% APR financing promo stays live** — financing runs through Chimney
+   Monkey; revisit before launch.
+3. **Reviews page**: parked; placeholder content stays for now.
+4. **Dimplex Optimyst price normalized to $580** everywhere ($580.50 removed).
+
+New Pencil-side items from this round (so re-exports don't regress):
+- All cart-CTA/shipping copy changes above must be mirrored in the .pen files.
+- Log-set product pages say "On live display in our Buffalo Grove showroom"
+  (subtitle) AND "Available to order — may not be on the display floor" (badge)
+  on the same page — contradictory availability signals; pick per product.
+
+---
+
+
 Full review of all 88 pages per Art's QA brief. Automated sweep: every page at
 1440 / 1024 / 768 / 390 / 320 px — horizontal overflow, JS errors, accordion
 function, nav-target resolution, local image resolution. Visual inspection: one
