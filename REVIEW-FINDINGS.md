@@ -1,5 +1,29 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## Update 3 (infrastructure round): reconciliation with Codex's independent inspection
+
+Codex's four reported findings, verified against deployed `main` (b504adc):
+
+1. **"14 'ship free' instances outside /pro-tools/"** — STALE: measured before
+   Art's 10:43 push. Deployed main now has **zero** cart/shipping terms outside
+   /pro-tools/ (grep-verified against origin/main). No action.
+2. **"No additional embedded Page/* frames"** — CONFIRMED, matches my result
+   after the de-duplication pass.
+3. **"Overflow 320–1440 not independently browser-verified"** — noted; my
+   Playwright sweep covered all 88 pages × 5 widths, 0 issues. Independent
+   re-verification welcome once Codex has write access to record results.
+4. **"404.html redirects to /heatcrafter-site/"** — **REAL BUG, good catch.**
+   An old 404 was resurrected by the August force-push flow and has shipped
+   ever since. Fixed in this commit: 404.html now derives the preview root
+   from the URL (works on any owner/org and later on a custom domain).
+
+Also in this commit: AGENTS.md gains the four-collaborator role matrix
+(Art / Claude / Codex / Charlie-planned). Codex write access and possible
+repo transfer to a business org are in progress — see Art's action list.
+
+---
+
+
 ## Update (same day): Art's decisions, executed
 
 1. **Shopping cart removed** from the fireplace side (Art's call, 2026-11-12):

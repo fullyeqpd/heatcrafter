@@ -1,6 +1,17 @@
 # HeatCrafter Preview Site — Agent Guide
 
-This repo is the **partner-review preview** of the new HeatCrafter site (fireplace showroom, Buffalo Grove IL, North Shore service area). It is a static site deployed by GitHub Pages. Two AI agents work here: **Claude** (in Art Kalina's Cowork session — owns the design-export pipeline) and **Codex** (reviews and makes direct changes). Art Kalina (artiomk) is the owner and final decision-maker.
+This repo is the **partner-review preview** of the new HeatCrafter site (fireplace showroom, Buffalo Grove IL, North Shore service area). It is a static site deployed by GitHub Pages. Art Kalina (`artiomk`) is the owner and final decision-maker.
+
+## Roles (agreed 2026-11-12)
+
+| Collaborator | Primary ownership |
+|---|---|
+| **Art** | Business decisions, publishing (runs the local publish script), access grants, final say on copy/pricing/claims/launch |
+| **Claude** (Art's Cowork session) | Pencil design files, visual design, page layouts, design exports, the injected script/style layers, design consistency, responsive work |
+| **Codex / ChatGPT** | Technical development, repo maintenance, functional testing, navigation verification, source auditing, SEO/technical review, cross-page validation, independent QA |
+| **Charlie** (planned — NOT yet invited) | Product information only: products, specs, pricing, images, availability. Blocked on the product-data architecture proposal; no access yet |
+
+Either agent may propose improvements anywhere; implementation respects the source-of-truth rules below. Disagreements go to Art.
 
 ## Deployment
 
