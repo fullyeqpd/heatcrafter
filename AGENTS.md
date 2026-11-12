@@ -16,7 +16,7 @@ Either agent may propose improvements anywhere; implementation respects the sour
 ## Deployment
 
 - Push to `main` → GitHub Pages redeploys automatically in ~1 minute.
-- Live URL: **https://artiomk.github.io/heatcrafter/** (lowercase path; the repo-cased path 404s).
+- Live URL: **https://fullyeqpd.github.io/heatcrafter/** (lowercase path; the repo-cased path 404s).
 - `heatcrafter.com` is NOT pointed here yet. Do not configure a custom domain, and do not remove the `noindex` meta tags — both happen only at go-live, on Art's say-so.
 
 ## What this site is (important)
