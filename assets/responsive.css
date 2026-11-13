@@ -179,3 +179,52 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[role="link"]:focus-v
  .hc-page [data-pencil-name$="Table"] [data-pencil-name="cell"] {padding:12px 8px!important;}
  .hc-page [data-pencil-name$="Table"] .hc-text {font-size:13px!important;line-height:1.5!important;overflow-wrap:anywhere;}
 }
+/* The bear stays still; only the flame and nearby light move, for 3.6s. */
+[data-pencil-name="Header"] [data-pencil-name="LogoMark"] {position:relative;width:40px!important;height:45px!important;flex-shrink:0!important;overflow:visible;}
+.hc-logo-fire {display:block;position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;pointer-events:none;overflow:visible;}
+.hc-logo-halo {opacity:.18;transform-origin:121px 184px;}
+.hc-logo-rays {opacity:.2;}
+.hc-logo-flame,.hc-logo-core {transform-origin:122px 211px;}
+.hc-logo-core {opacity:.88;}
+.hc-logo-igniting .hc-logo-flame {animation:hc-flame-light 3.6s ease-in-out both;}
+.hc-logo-igniting .hc-logo-core {animation:hc-flame-core 3.6s ease-in-out both;}
+.hc-logo-igniting .hc-logo-halo {animation:hc-flame-glow 3.6s ease-in-out both;}
+.hc-logo-igniting .hc-logo-rays {animation:hc-flame-rays 3.6s ease-in-out both;}
+@keyframes hc-flame-light {
+  0% {opacity:.45;transform:scale(.94,.9);}
+  18% {opacity:1;transform:scale(1.02,1.045) rotate(-1deg);}
+  33% {transform:scale(.98,1.01) rotate(1deg);}
+  48% {transform:scale(1.015,1.035) rotate(-.8deg);}
+  66% {transform:scale(.99,.98) rotate(.7deg);}
+  82% {transform:scale(1.01,1.025);}
+  100% {opacity:1;transform:none;}
+}
+@keyframes hc-flame-core {
+  0% {opacity:.2;transform:scale(.8);}
+  22% {opacity:1;transform:scale(1.08);}
+  43% {opacity:.68;transform:scale(.96,1.05);}
+  62% {opacity:.98;transform:scale(1.03,.98);}
+  100% {opacity:.88;transform:none;}
+}
+@keyframes hc-flame-glow {
+  0% {opacity:.08;transform:scale(.7);}
+  24% {opacity:.8;transform:scale(1.16);}
+  45% {opacity:.42;transform:scale(.96);}
+  63% {opacity:.64;transform:scale(1.08);}
+  100% {opacity:.18;transform:none;}
+}
+@keyframes hc-flame-rays {
+  0% {opacity:0;}
+  27% {opacity:.85;}
+  49% {opacity:.35;}
+  66% {opacity:.62;}
+  100% {opacity:.2;}
+}
+@media(max-width:599px) {
+  [data-pencil-name="Header"] [data-pencil-name="LogoMark"] {width:36px!important;height:41px!important;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .hc-logo-fire * {animation:none!important;transform:none!important;}
+  .hc-logo-halo {opacity:.18!important;}
+  .hc-logo-rays {opacity:.2!important;}
+}

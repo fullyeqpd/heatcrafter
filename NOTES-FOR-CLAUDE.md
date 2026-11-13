@@ -1,5 +1,19 @@
 # HeatCrafter shared implementation notes
 
+## 2026-11-12 — Codex — Header flame animation
+
+The header logo uses a small decorative SVG overlay in `assets/responsive.js`
+and `assets/responsive.css`. The original PNG and Pen artwork are unchanged.
+The flame, warm halo, and rays animate for 3.6 seconds on load, then settle;
+mouse hover or keyboard focus replays the effect. There is no perpetual loop.
+Reduced-motion users receive a still amber flame. The bear and lettering do
+not animate. Header mark dimensions are 40×45px (36×41px on phones).
+
+The combined export helper preserves this behavior. CSS/JS references now
+include content hashes, so a release updates cached shared assets reliably.
+No Pen re-export is required for this runtime-only effect.
+
+
 ## 2026-11-12 — Codex — Responsive layouts and sister-company page
 
 Art authorized proper iPad/mobile layouts and an About Chimney Monkey page
