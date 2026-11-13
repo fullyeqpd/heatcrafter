@@ -17,7 +17,7 @@
 
 - Changed: brightened the flame/halo and illuminated the original ray pattern in both header and footer logos via a masked SVG overlay. Each logo animates on first view, then settles; hover/focus can replay it. Original PNGs and Pen source are unchanged.
 - Check: verified full ray alignment, unique SVG IDs, footer first-view timing, nested-page mask URLs, reduced-motion positioning, and 320/820/1512px layouts. All 89 pages pass source/link checks; export reruns are idempotent; JS syntax/diff checks pass.
-- Next: merge and verify the published header/footer treatment; preserve the shared export workflow in `NOTES-FOR-CLAUDE.md`.
+- Published: [PR #5](https://github.com/fullyeqpd/heatcrafter/pull/5) merged at `a4515cd`; GitHub Pages built successfully. Live verification confirms two overlays, correct mask URLs, header ignition, footer ignition on scroll, and no horizontal overflow. Next: preserve the shared export workflow in `NOTES-FOR-CLAUDE.md`.
 
 ---
 
