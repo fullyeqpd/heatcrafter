@@ -1,5 +1,46 @@
 # HeatCrafter shared implementation notes
 
+## 2026-11-12 — Codex — Responsive layouts and sister-company page
+
+Art authorized proper iPad/mobile layouts and an About Chimney Monkey page
+explaining the sister-company relationship. The shared responsive layer now
+covers all 89 pages, with a 1400px breakpoint (including iPad Pro landscape).
+Phone layouts stack content; tablet layouts use two-column grids. Navigation
+uses a native button, expandable groups, ordinary links, and Escape dismissal.
+Comparison/cost tables retain aligned columns on phones.
+
+After overlaying any Pencil HTML export, run from this repository:
+
+```sh
+python3 tools/prepare-site.py
+python3 tools/check-site.py
+```
+
+`prepare-site.py` rebuilds the sister page with the current exported About
+header/footer, reapplies the external partner anchors, and reapplies responsive
+classes, viewport, internal sister link, menu, and CSS/JS includes. It is
+idempotent. `apply-preview-fit.py` remains as a compatibility entry point and
+now delegates to the responsive helper; the older scaling instructions below
+are historical and superseded.
+
+Shared source: `assets/responsive.css`, `assets/responsive.js`,
+`tools/apply-responsive.py`, and `tools/export_markup.py`. The company-page
+body lives in `templates/about-chimney-monkey.html`; update it alongside the
+Pen copy if changing that content. Existing exported copy/assets are retained.
+No domain, noindex, product, pricing, or form-delivery changes are included.
+
+Pen updates in the main HeatCrafter document:
+- Shared Footer: About Chimney Monkey (`aja8t`) in Col-COMPANY.
+- Full desktop sister-company page: `ErikD`.
+- Phone (390px) and iPad (820px) hero references: `S7BgW` and `HBoYa`.
+- Existing desktop pages were not duplicated into 88 device-specific canvases;
+  responsive behavior is maintained in the shared implementation layer.
+
+Pen structural checks report no enabled-node layout problems on the new
+frames. Canvas screenshot output was unreliable for the offscreen reference
+frames; the browser screenshots and checks in `RESPONSIVE-QA.md` are the visual
+verification for this release. Review the references in Pen before re-exporting.
+
 ## 2026-11-12 — Codex — Footer partner links
 
 Art requested that the footer's Chimney Monkey mention link to

@@ -23,18 +23,19 @@ Art explicitly authorized Codex to work directly in Pencil alongside Claude and 
 
 Every page was **exported from a Pencil design file** on Art's Mac, then post-processed. Consequences:
 
-- Pages live at `/{slug}/index.html` (88 pages). Markup is machine-generated: one big tree of `<div>`s with inline styles and `data-pencil-name` attributes. There is no templating system; the header/footer markup is duplicated into every page.
+- Pages live at `/{slug}/index.html` (89 pages). Markup is machine-generated: one big tree of `<div>`s with inline styles and `data-pencil-name` attributes. There is no templating system; the header/footer markup is duplicated into every page.
 - **The Pencil design is the source of truth for layout and copy.** When either agent changes the design, that agent re-exports affected pages and the generated markup is replaced wholesale. Hand edits inside the generated markup will be lost on the next re-export of that page.
+- The responsive layer is shared source in `assets/responsive.css` and `assets/responsive.js`; `tools/apply-responsive.py` reapplies classes and navigation to the exports. The new company page body is maintained in `templates/about-chimney-monkey.html` and mirrored in Pen. Keep both in sync when changing that page.
 - **Safe places to edit** (these are re-applied by Claude's build and survive re-exports *if the changes are recorded for the other agent* — see Coordination):
   - The injected `<script>` blocks at the bottom of each page: nav link-map (`MAP`), header dropdown menus (`DD`), collapsible Q&A accordions (`ANS` — includes answer copy that exists nowhere else), scale-to-fit (`function fit()`).
   - The injected `<style>` blocks in `<head>`: body centering, `hc-dd` dropdown styles, the `[data-pencil-name="Header"]` width fix.
-- These injected blocks are **duplicated in all 88 pages**. Any change to them must be applied to every page (script it — don't hand-edit 88 files).
-- The footer partner name links to `https://chimneymonkey.com/` in both FTagline and Copyright. After each HTML export/overlay, run `python3 tools/apply-footer-partner-links.py` to preserve these inline anchors alongside the preview-fit step. See `NOTES-FOR-CLAUDE.md` for both post-export requirements.
+- These injected blocks are **duplicated in all exported pages**. Any change to them must be applied to every page (script it — don't hand-edit 88 files).
+- After every Pencil export/overlay, run `python3 tools/prepare-site.py` and `python3 tools/check-site.py`. This preserves the responsive layer, the sister-company page, both external partner links, and the internal About Chimney Monkey footer link. See `NOTES-FOR-CLAUDE.md`.
 
 ## Known quirks
 
 - Most navigation is synthesized by the `MAP` click-script from visible label text; the footer partner names are semantic `<a>` links added by the post-export helper. If a navigation label is renamed in the design, its link silently dies — worth checking after content changes.
-- Pencil pages remain 1440px wide. The preview's injected `fit()` script scales them to the available browser width both below and above 1440px, removing outer strips on wide desktops. Phones still get `<meta name="viewport" content="width=1440">`; this is proportional scaling, not responsive reflow. Don't add `width=device-width` back without implementing the responsive layouts. After every HTML export/overlay, run `python3 tools/apply-preview-fit.py` before publishing; see `NOTES-FOR-CLAUDE.md`.
+- The desktop Pencil canvas remains 1440px wide. Below 1400px, shared `assets/responsive.css` reflows the page at normal scale with a device-width viewport; phones stack content and tablets use two-column grids and a touch menu. At 1400px and wider, desktop scaling preserves the edge-to-edge presentation. `tools/apply-preview-fit.py` now delegates to the responsive helper so older publishing instructions cannot restore phone scaling.
 - `images/` is ~200MB of PNGs referenced by depth-relative paths (`../../images/...`). Don't rename images; several pages share them.
 - The 20 collapsed-question answers in the `ANS` map were written by Claude in Aug 2026 and are pending Art's final copy review.
 
