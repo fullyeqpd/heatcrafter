@@ -1,5 +1,13 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+### 2026-11-12 — Codex — Footer partner links
+
+- Changed: linked both footer mentions of Chimney Monkey to `https://chimneymonkey.com/` across all 88 pages, preserving the surrounding copy/layout. Added `tools/apply-footer-partner-links.py` and export guidance in `NOTES-FOR-CLAUDE.md` and `AGENTS.md`.
+- Check: verified exactly 176 inline links and no other HTML changes; rerunning the helper changes zero pages. Browser click testing reaches Chimney Monkey. Claude: run both post-export helpers after future Pencil exports.
+- Next: publish through the review branch under Art's standing approval and verify the live footer; genuine tablet/mobile layouts remain separate work.
+
+---
+
 ## 2026-11-12 — Codex — Full-width preview published; standing approval clarified
 
 - Changed: merged [PR #1](https://github.com/fullyeqpd/heatcrafter/pull/1) at `e3a2094` after Art's approval; the 88-page desktop width fix is published. Updated `AGENTS.md` to use Art's standing approval for routine implementation, verification, merging, and publishing within the requested scope without repeated permission questions.
