@@ -4,7 +4,7 @@
 
 - Changed: linked both footer mentions of Chimney Monkey to `https://chimneymonkey.com/` across all 88 pages, preserving the surrounding copy/layout. Added `tools/apply-footer-partner-links.py` and export guidance in `NOTES-FOR-CLAUDE.md` and `AGENTS.md`.
 - Check: verified exactly 176 inline links and no other HTML changes; rerunning the helper changes zero pages. Browser click testing reaches Chimney Monkey. Claude: run both post-export helpers after future Pencil exports.
-- Next: publish through the review branch under Art's standing approval and verify the live footer; genuine tablet/mobile layouts remain separate work.
+- Published: [PR #2](https://github.com/fullyeqpd/heatcrafter/pull/2) merged at `416c061`; GitHub Pages reports a successful build. The live homepage exposes both links, and clicking the published copyright link reaches Chimney Monkey. Genuine tablet/mobile layouts remain the next separate task.
 
 ---
 
