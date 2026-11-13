@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Apply the shared responsive layer after Pencil exports. Safe to rerun."""
 from pathlib import Path
-import re, json, html as escape
+import re, json, hashlib, html as escape
 from export_markup import ExportMarkup, replace_ranges
 ROOT=Path(__file__).resolve().parents[1]
+CSS_VERSION=hashlib.sha256((ROOT/'assets/responsive.css').read_bytes()).hexdigest()[:10]
+JS_VERSION=hashlib.sha256((ROOT/'assets/responsive.js').read_bytes()).hexdigest()[:10]
 
 def px(value):
     try:return float(value.removesuffix('px'))
@@ -73,8 +75,8 @@ def apply(path):
     nav.append('</nav><!-- /hc-responsive-menu -->')
     edits.append((header['end'],header['end'],''.join(nav)))
     content=replace_ranges(content,edits)
-    content=content.replace('</head>',f'<link data-hc-responsive rel="stylesheet" href="{prefix}assets/responsive.css" />\n</head>')
-    content=content.replace('</body>',f'<script data-hc-responsive src="{prefix}assets/responsive.js"></script>\n</body>')
+    content=content.replace('</head>',f'<link data-hc-responsive rel="stylesheet" href="{prefix}assets/responsive.css?v={CSS_VERSION}" />\n</head>')
+    content=content.replace('</body>',f'<script data-hc-responsive src="{prefix}assets/responsive.js?v={JS_VERSION}"></script>\n</body>')
     if content!=original:path.write_text(content);return True
     return False
 
