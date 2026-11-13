@@ -1,5 +1,13 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## 2026-11-12 — Codex — Full-width preview published; standing approval clarified
+
+- Changed: merged [PR #1](https://github.com/fullyeqpd/heatcrafter/pull/1) at `e3a2094` after Art's approval; the 88-page desktop width fix is published. Updated `AGENTS.md` to use Art's standing approval for routine implementation, verification, merging, and publishing within the requested scope without repeated permission questions.
+- Check: GitHub Pages reports the merge commit built successfully. A fresh live homepage load at 1512px shows the page spanning x=0 to x=1511.99, zoom=1.05, and no horizontal overflow. The unversioned homepage initially served cached content; a deployment-version query returned the new build.
+- Next: implement genuine tablet/mobile layouts as a separate task. The prior prepared-state entry is historical; this entry records the verified release. Initial domain cutover/noindex launch decisions and platform-required confirmations remain separate.
+
+---
+
 ## 2026-11-12 — Codex — Desktop edge-to-edge preview prepared
 
 - Changed: removed the 1440px upper scaling cap in all 88 index pages; the page expands proportionally to fill wider windows. Added `tools/apply-preview-fit.py`, export guidance in `NOTES-FOR-CLAUDE.md`, and Art's uppercase YOUR ACTION / NEXT STEPS communication preference in `AGENTS.md`.

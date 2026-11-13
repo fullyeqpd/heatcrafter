@@ -41,11 +41,11 @@ Every page was **exported from a Pencil design file** on Art's Mac, then post-pr
 
 1. **Pull before you push. Never force-push.** Claude's updates arrive as ordinary commits on `main` (via a script Art runs locally); force-pushing destroys them, and vice versa.
 2. Small, safe fixes (typos in injected copy, CSS polish, script bugs): commit directly to `main` with a clear message — the message is how Claude learns what you changed.
-3. Larger changes (restructuring, new behavior, anything touching many pages): open a branch + PR and let Art decide.
+3. Use a branch + PR for larger changes so the scope and diff stay reviewable. Art's standing approval (2026-11-12) covers implementing, checking, merging, and publishing routine design and technical changes within the requested task, including changes repeated across many pages; do not ask again solely because a PR or deployment is involved. Complete the necessary checks and respect enforced repository protections. Ask only when a material new decision or expanded scope is needed, or a platform requires confirmation at action time.
 4. Either agent may implement **content or layout** changes directly in the Pencil design / build layer and re-export affected pages. Avoid standalone edits inside generated markup that would be lost on re-export. Both agents read the latest repo history and coordination notes before rebuilding, incorporate recorded injected-layer changes into the build, and document which design pages and files changed.
 5. Review findings that aren't code (copy inconsistencies, UX issues, broken flows) → write them to `REVIEW-FINDINGS.md` at the repo root, newest on top, so Art and both agents see one running list.
 6. For simultaneous work, record the pages/components and files each agent is editing before making changes. Work on separate pages or branches where possible; serialize edits to the same Pencil document or shared components unless the editor provides verified conflict-safe collaboration. Confirm the active Pencil file before editing, re-read shared state before export, and preserve the other agent's changes.
-7. This authorization continues after launch. Use the established publishing workflow for routine changes; larger changes still use a branch and PR under rule 3. Initial production cutover, domain changes, and removal of `noindex` remain explicit launch decisions.
+7. This authorization continues after launch. Use the established publishing workflow and the standing approval in rule 3. Initial production cutover, domain changes, and removal of `noindex` remain explicit launch decisions.
 
 ## Communication preference (Art, 2026-11-12)
 
