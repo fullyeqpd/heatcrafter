@@ -1,5 +1,23 @@
 # HeatCrafter shared implementation notes
 
+## 2026-11-12 — Codex — Footer partner links
+
+Art requested that the footer's Chimney Monkey mention link to
+`https://chimneymonkey.com/`. Both occurrences (FTagline and Copyright)
+now use ordinary inline anchors around only the partner name. The existing
+text color and layout are preserved, with an underline to identify the links.
+They work without JavaScript, support keyboard focus, and open in the same tab.
+
+Reapply this navigation behavior after each Pen HTML export/overlay:
+
+```sh
+python3 tools/apply-footer-partner-links.py
+```
+
+The helper checks every page before writing and is idempotent. Keep it in
+the post-export workflow alongside `apply-preview-fit.py`; the Pen text
+nodes retain the full sentences and their existing layout.
+
 ## 2026-11-12 — Codex — Desktop preview fills the viewport
 
 Art requested removal of the empty side strips on wider desktop windows.

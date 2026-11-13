@@ -29,10 +29,11 @@ Every page was **exported from a Pencil design file** on Art's Mac, then post-pr
   - The injected `<script>` blocks at the bottom of each page: nav link-map (`MAP`), header dropdown menus (`DD`), collapsible Q&A accordions (`ANS` — includes answer copy that exists nowhere else), scale-to-fit (`function fit()`).
   - The injected `<style>` blocks in `<head>`: body centering, `hc-dd` dropdown styles, the `[data-pencil-name="Header"]` width fix.
 - These injected blocks are **duplicated in all 88 pages**. Any change to them must be applied to every page (script it — don't hand-edit 88 files).
+- The footer partner name links to `https://chimneymonkey.com/` in both FTagline and Copyright. After each HTML export/overlay, run `python3 tools/apply-footer-partner-links.py` to preserve these inline anchors alongside the preview-fit step. See `NOTES-FOR-CLAUDE.md` for both post-export requirements.
 
 ## Known quirks
 
-- No real `<a>` links exist in the generated markup; navigation is synthesized by the `MAP` click-script from visible label text. If a label is renamed in the design, its link silently dies — worth checking after content changes.
+- Most navigation is synthesized by the `MAP` click-script from visible label text; the footer partner names are semantic `<a>` links added by the post-export helper. If a navigation label is renamed in the design, its link silently dies — worth checking after content changes.
 - Pencil pages remain 1440px wide. The preview's injected `fit()` script scales them to the available browser width both below and above 1440px, removing outer strips on wide desktops. Phones still get `<meta name="viewport" content="width=1440">`; this is proportional scaling, not responsive reflow. Don't add `width=device-width` back without implementing the responsive layouts. After every HTML export/overlay, run `python3 tools/apply-preview-fit.py` before publishing; see `NOTES-FOR-CLAUDE.md`.
 - `images/` is ~200MB of PNGs referenced by depth-relative paths (`../../images/...`). Don't rename images; several pages share them.
 - The 20 collapsed-question answers in the `ANS` map were written by Claude in Aug 2026 and are pending Art's final copy review.
