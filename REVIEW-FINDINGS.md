@@ -17,7 +17,7 @@
 
 - Changed: added a decorative SVG flame, halo, and rays over the existing header mark via shared CSS/JS; the bear and lettering stay still. The effect plays for 3.6 seconds on load/hover/focus, then settles, with a still reduced-motion variant. Shared asset URLs now use content hashes.
 - Check: original logo images and Pen artwork preserved; browser checks cover flame alignment, finite duration, reduced-motion behavior, and 320/820/1512px header sizing. Export reruns are idempotent, all 89 pages pass source/link checks, and JS syntax/diff checks pass.
-- Next: publish under Art’s standing approval, verify the live logo, and retain the combined export step documented in `NOTES-FOR-CLAUDE.md`.
+- Published: [PR #4](https://github.com/fullyeqpd/heatcrafter/pull/4) merged at `99dfa27`; GitHub Pages built successfully and the live homepage loads the versioned script and runs the 3.6-second flame animation without horizontal overflow. Hover and keyboard replay were verified locally. Next: retain the combined export step documented in `NOTES-FOR-CLAUDE.md`.
 
 ---
 
