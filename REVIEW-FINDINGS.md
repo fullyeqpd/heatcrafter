@@ -1,5 +1,13 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## 2026-11-12 — Codex — Shared Pencil and website design authority
+
+- Changed: updated `AGENTS.md` at Art's explicit request so Codex and Claude can both edit Pencil designs, visual layouts, responsive behavior, exports, and implementation, including after launch; coordinated publishing uses the established workflow.
+- Check: this supersedes the earlier Claude-only design role. Both agents should coordinate page/component ownership and serialize shared-document edits to preserve each other's work. Existing review entries remain unchanged.
+- Next: the Pencil connector currently reports no running app connection, so canvas access is not yet verified. Desktop width and tablet/mobile layouts remain open work; no website source files changed in this documentation update.
+
+---
+
 ## 2026-11-12 — Codex — GitHub integration write-access test
 
 - Changed: added this documentation-only entry through the ChatGPT GitHub connector after Art authorized repository access for `fullyeqpd/heatcrafter` (repository ID `1307919133`).
