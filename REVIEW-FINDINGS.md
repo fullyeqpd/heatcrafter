@@ -16,7 +16,7 @@
 
 - Changed: added shared phone/tablet reflow and touch navigation to all 89 pages; added `/about-chimney-monkey/` and its footer link. Updated the shared Pen Footer, added the sister page and phone/iPad hero references, and preserved existing desktop content.
 - Check: 89 pages × 6 widths passed overflow/text-clipping checks, with 48 follow-up checks after table/page refinements. Menu navigation, Escape dismissal, footer routing, relative links/assets, export idempotency, and original-copy preservation passed; see `RESPONSIVE-QA.md`.
-- Next: merge the checked branch under Art’s standing approval and verify GitHub Pages. Claude: use the combined export helper; review new Pen references before re-exporting. Existing launch-readiness work remains separate.
+- Published: [PR #3](https://github.com/fullyeqpd/heatcrafter/pull/3) merged at `4597991`; GitHub Pages built successfully. Live phone homepage, iPad company/product layouts, touch navigation, and footer routing verified. Next: booking delivery and remaining prelaunch content; Claude should use the combined export helper and review new Pen references before re-exporting.
 
 ---
 

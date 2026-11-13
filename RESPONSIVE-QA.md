@@ -22,4 +22,4 @@ Scope: all 88 existing pages plus `/about-chimney-monkey/`.
 
 - Pen includes the new company page, Footer link, and phone/iPad hero references. Existing desktop canvases remain the design source; shared code handles reflow.
 - No custom-domain cutover or noindex removal. Existing preview-only forms, placeholder reviews, and unresolved product-copy questions remain outside this layout release.
-- The deploy must be verified after merge; add the release receipt to the repository log.
+- Release verified: PR #3 merged at `4597991`; GitHub Pages reports a successful build. The live homepage at 390px and company/product pages at 820px have no document overflow or text-clipping findings. The live touch-menu company link and product-footer company link both reach `/heatcrafter/about-chimney-monkey/`.
