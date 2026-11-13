@@ -1,5 +1,25 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## Current state
+
+- Partner-review preview: https://fullyeqpd.github.io/heatcrafter/; the custom domain is not cut over.
+- The repository contains 89 pages, including About Chimney Monkey, which explains the sister-company relationship.
+- Phone and iPad layouts reflow below 1400px; wider desktop layouts retain edge-to-edge scaling.
+- Both external Chimney Monkey footer mentions remain linked; the company column now also links to the new internal page.
+- Run `tools/prepare-site.py` and `tools/check-site.py` after every Pencil export.
+- Existing form delivery, placeholder reviews, and product-copy questions remain separate prelaunch work.
+- Art’s standing approval covers routine checked implementation, merge, and publication within scope.
+
+## Log
+
+### 2026-11-12 — Codex — Responsive layouts and sister-company page
+
+- Changed: added shared phone/tablet reflow and touch navigation to all 89 pages; added `/about-chimney-monkey/` and its footer link. Updated the shared Pen Footer, added the sister page and phone/iPad hero references, and preserved existing desktop content.
+- Check: 89 pages × 6 widths passed overflow/text-clipping checks, with 48 follow-up checks after table/page refinements. Menu navigation, Escape dismissal, footer routing, relative links/assets, export idempotency, and original-copy preservation passed; see `RESPONSIVE-QA.md`.
+- Next: merge the checked branch under Art’s standing approval and verify GitHub Pages. Claude: use the combined export helper; review new Pen references before re-exporting. Existing launch-readiness work remains separate.
+
+---
+
 ### 2026-11-12 — Codex — Footer partner links
 
 - Changed: linked both footer mentions of Chimney Monkey to `https://chimneymonkey.com/` across all 88 pages, preserving the surrounding copy/layout. Added `tools/apply-footer-partner-links.py` and export guidance in `NOTES-FOR-CLAUDE.md` and `AGENTS.md`.
