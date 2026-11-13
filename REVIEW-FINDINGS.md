@@ -1,5 +1,13 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## 2026-11-12 — Codex — Desktop edge-to-edge preview prepared
+
+- Changed: removed the 1440px upper scaling cap in all 88 index pages; the page expands proportionally to fill wider windows. Added `tools/apply-preview-fit.py`, export guidance in `NOTES-FOR-CLAUDE.md`, and Art's uppercase YOUR ACTION / NEXT STEPS communication preference in `AGENTS.md`.
+- Check: all 88 HTML files differ only in the fit assignment; helper rerun changes zero pages. Browser checks at 390, 820, 1440, 1512, 1920, and 2560px show aligned page/header/footer edges and no horizontal overflow. Room, brand, product, and booking pages also fit at 1512px; the header booking link navigates correctly. Prepared on a review branch, not yet live.
+- Next: approve the PR for publishing under the existing many-page review rule, then verify the deployed preview. Genuine tablet/mobile layouts remain separate work. Pen is now connected to the main HeatCrafter document; this fix belongs to the export script and required no canvas edits.
+
+---
+
 ## 2026-11-12 — Codex — Shared Pencil and website design authority
 
 - Changed: updated `AGENTS.md` at Art's explicit request so Codex and Claude can both edit Pencil designs, visual layouts, responsive behavior, exports, and implementation, including after launch; coordinated publishing uses the established workflow.

@@ -33,7 +33,7 @@ Every page was **exported from a Pencil design file** on Art's Mac, then post-pr
 ## Known quirks
 
 - No real `<a>` links exist in the generated markup; navigation is synthesized by the `MAP` click-script from visible label text. If a label is renamed in the design, its link silently dies — worth checking after content changes.
-- Pages are fixed 1440px wide. Phones get `<meta name="viewport" content="width=1440">`; smaller desktop windows get `body{zoom}` from the fit script. Don't add `width=device-width` back.
+- Pencil pages remain 1440px wide. The preview's injected `fit()` script scales them to the available browser width both below and above 1440px, removing outer strips on wide desktops. Phones still get `<meta name="viewport" content="width=1440">`; this is proportional scaling, not responsive reflow. Don't add `width=device-width` back without implementing the responsive layouts. After every HTML export/overlay, run `python3 tools/apply-preview-fit.py` before publishing; see `NOTES-FOR-CLAUDE.md`.
 - `images/` is ~200MB of PNGs referenced by depth-relative paths (`../../images/...`). Don't rename images; several pages share them.
 - The 20 collapsed-question answers in the `ANS` map were written by Claude in Aug 2026 and are pending Art's final copy review.
 
@@ -46,6 +46,11 @@ Every page was **exported from a Pencil design file** on Art's Mac, then post-pr
 5. Review findings that aren't code (copy inconsistencies, UX issues, broken flows) → write them to `REVIEW-FINDINGS.md` at the repo root, newest on top, so Art and both agents see one running list.
 6. For simultaneous work, record the pages/components and files each agent is editing before making changes. Work on separate pages or branches where possible; serialize edits to the same Pencil document or shared components unless the editor provides verified conflict-safe collaboration. Confirm the active Pencil file before editing, re-read shared state before export, and preserve the other agent's changes.
 7. This authorization continues after launch. Use the established publishing workflow for routine changes; larger changes still use a branch and PR under rule 3. Initial production cutover, domain changes, and removal of `noindex` remain explicit launch decisions.
+
+## Communication preference (Art, 2026-11-12)
+
+- Always suggest concrete next steps at handoff under **NEXT STEPS**.
+- Clearly label anything Art needs to do with **YOUR ACTION**. If no action is needed, say so when relevant. Use uppercase labels and concise, plain-language instructions.
 
 ## Good first review targets
 
