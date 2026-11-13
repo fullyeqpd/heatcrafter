@@ -1,5 +1,22 @@
 # HeatCrafter shared implementation notes
 
+## 2026-11-12 — Codex — Brighter rays and footer illumination
+
+Both header and footer now have a brighter flame/halo and illuminated gold
+rays. The SVG uses the original ink logo as a luminance mask, with contrast and
+alpha amplification so the existing rays themselves light up. Original PNGs,
+bear outlines, lettering, and Pen artwork are preserved. The footer overlay
+uses the full 834×674 wordmark viewBox and a 200px mark offset; do not apply
+reduced-motion transforms to its outer positioning group.
+
+Each mark has unique SVG IDs. IntersectionObserver starts the short ignition
+when that logo first enters view, so the footer effect does not finish offscreen.
+Mouse hover/focus replays it. After 3.6 seconds it settles into a bright still
+state; reduced-motion mode has no animation. Shared CSS/JS content hashes and
+`tools/prepare-site.py` preserve the change after exports. This supersedes the
+more subdued, header-only treatment documented below.
+
+
 ## 2026-11-12 — Codex — Header flame animation
 
 The header logo uses a small decorative SVG overlay in `assets/responsive.js`

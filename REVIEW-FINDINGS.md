@@ -6,12 +6,20 @@
 - The repository contains 89 pages, including About Chimney Monkey, which explains the sister-company relationship.
 - Phone and iPad layouts reflow below 1400px; wider desktop layouts retain edge-to-edge scaling.
 - Both external Chimney Monkey footer mentions remain linked; the company column now also links to the new internal page.
-- The header bear’s flame has a brief amber ignition and ray glow; reduced-motion mode keeps it still.
+- Both header/footer logos have brighter flames and illuminated original gold rays; brief ignition begins on first view, with still reduced-motion variants.
 - Run `tools/prepare-site.py` and `tools/check-site.py` after every Pencil export.
 - Existing form delivery, placeholder reviews, and product-copy questions remain separate prelaunch work.
 - Art’s standing approval covers routine checked implementation, merge, and publication within scope.
 
 ## Log
+
+### 2026-11-12 — Codex — Brighter original rays and matching footer glow
+
+- Changed: brightened the flame/halo and illuminated the original ray pattern in both header and footer logos via a masked SVG overlay. Each logo animates on first view, then settles; hover/focus can replay it. Original PNGs and Pen source are unchanged.
+- Check: verified full ray alignment, unique SVG IDs, footer first-view timing, nested-page mask URLs, reduced-motion positioning, and 320/820/1512px layouts. All 89 pages pass source/link checks; export reruns are idempotent; JS syntax/diff checks pass.
+- Next: merge and verify the published header/footer treatment; preserve the shared export workflow in `NOTES-FOR-CLAUDE.md`.
+
+---
 
 ### 2026-11-12 — Codex — Light the header logo’s flame
 
