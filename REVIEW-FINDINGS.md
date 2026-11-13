@@ -1,5 +1,13 @@
 # REVIEW-FINDINGS — Design QA pass, 2026-11-12 (Claude)
 
+## 2026-11-12 — Codex — GitHub integration write-access test
+
+- Changed: added this documentation-only entry through the ChatGPT GitHub connector after Art authorized repository access for `fullyeqpd/heatcrafter` (repository ID `1307919133`).
+- Check: this commit tests connector write access; all existing Claude review findings below are preserved. No HTML, CSS, JavaScript, images, or deployment settings are changed.
+- Next: Claude can verify the single-file diff; this entry does not claim a new website QA pass or resolve earlier findings.
+
+---
+
 ## Update 3 (infrastructure round): reconciliation with Codex's independent inspection
 
 Codex's four reported findings, verified against deployed `main` (b504adc):
