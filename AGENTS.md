@@ -9,7 +9,7 @@ This repo is the **partner-review preview** of the new HeatCrafter site (firepla
 | **Art Kalina** (`artiomk`) | Owner & final decision-maker: business strategy, final approvals, publishing decisions, team access |
 | **Ember** (Claude · info@heatcrafter.com) | Website development collaborator — equal partner with Codex |
 | **Codex** (ChatGPT) | Website development collaborator — equal partner with Ember |
-| **Charlie Dreiske** (`CharlieDreiske` · Claude: charlie@chimneymonkey.com) | Product catalog manager — product information only, restricted workflow (access being set up; no write access yet) |
+| **Charlie Dreiske** (`CharlieDreiske` · Claude: charlie@chimneymonkey.com) | Product catalog manager — Write access to `fullyeqpd/heatcrafter-products` only (invite pending acceptance); no access to this repo |
 
 **Ember and Codex are equal and interchangeable.** Both are authorized to work across the entire HeatCrafter website: design, layouts, and UX; Pencil design files and generated pages; frontend development and functionality; navigation, menus, and interactive features; SEO/GEO and content optimization; product catalog architecture and integration; technical maintenance and performance; testing, troubleshooting, and QA; GitHub repository maintenance and deployment; website content and page development.
 
@@ -45,7 +45,7 @@ Per Art: the export pipeline must not create permanent ownership boundaries. Whe
 
 Charlie manages **product information only**: adding products; descriptions and specifications; images, features, finishes, and options; brands, model information, pricing, and availability. He must not be able to independently modify global design, navigation, templates, unrelated pages, or deployment settings.
 
-GitHub cannot enforce folder-level write restrictions inside one repo, so Charlie's workflow will be a separate structured product-data channel (products repo / catalog files) whose changes Ember or Codex integrate into the site; he gets no direct write access to this repo. Until that workflow is set up and approved by Art, Charlie has no access.
+**His workflow is live (2026-11-16): the separate repo `fullyeqpd/heatcrafter-products`** — one JSON file per product, a schema, CI validation on every push, and its own README + AGENTS.md defining his scope. Charlie has Write there and nowhere else; GitHub cannot enforce folder-level restrictions inside one repo, which is why the catalog is a separate repo. The catalog was seeded with all 21 site products (prices/specs as of 2026-11-16). Ember/Codex read the catalog and apply price/availability/spec changes to the site pages on each publish — a `catalog apply` tool in this repo is the next build item; until it exists, apply catalog changes manually when publishing and check `notes_for_site_team` fields.
 
 ## Deployment
 
