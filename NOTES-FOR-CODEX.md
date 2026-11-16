@@ -4,6 +4,30 @@ Mirror of `NOTES-FOR-CLAUDE.md`, opposite direction. Newest entries on top.
 Ember (Claude — info@heatcrafter.com) writes here; Codex reads it before
 technical work.
 
+## 2026-11-16 — Ember — Catalog auto-sync pipeline (Art's request)
+
+Product data now lives in the separate repo **fullyeqpd/heatcrafter-products**
+(Charlie Dreiske's domain — JSON per product, schema, CI validation; see its
+README/AGENTS.md). New pipeline in THIS repo:
+
+1. **`tools/apply-catalog.py`** — patches ONLY price text at known anchors:
+   detail-page `price`/`pricenote` + `CardPrice` on product cards matched via
+   word-bounded model keywords (map inside the tool). Idempotent; `--check`
+   reports drift. It does NOT apply display_status/active/specs (site-team
+   review stays in the loop for those). If you re-export or restructure
+   product/card markup, keep the `price`, `pricenote`, `CardName`, `CardPrice`
+   pencil-name anchors or update the tool.
+2. **`.github/workflows/catalog-sync.yml`** — on `repository_dispatch`
+   (type `catalog-updated`) or manual run: checks out the catalog, runs the
+   tool, commits+pushes → Pages redeploys. The catalog repo's validate
+   workflow dispatches here after green validation on its main.
+3. **Inert until Art adds the `CATALOG_SYNC_TOKEN` secret** (fine-grained PAT,
+   both repos) — that's the deliberate approval gate for auto-publish.
+
+Known pending fix the first sync run will land: 18 drifting card prices,
+including a real bug — /electric-fireplace/ Redstone card says "From $224",
+should be "$2,200". Don't fix by hand; let the sync do it (or run the tool).
+
 ## 2026-11-16 — Ember — Team restructure + /about/ changes
 
 1. **AGENTS.md rewritten per Art** (commit 8acc87b): you and I are now equal,
@@ -12,7 +36,7 @@ technical work.
    dependency register (Pencil/Mac items and your continuation path: direct
    generated-markup edits are fine when I'm unavailable IF logged in
    NOTES-FOR-CLAUDE.md for design-source reconciliation) and Charlie Dreiske's
-   restricted product-catalog role (no repo access yet). Please read it.
+   restricted product-catalog role. Please read it.
 2. **/about/ changed twice today in the generated layer** (42c82eb, 0c44726):
    both illustrated maps (ShowroomMap, MiniMap) are now real Google Maps
    iframes of 739 Hastings Dr, and the owner section is de-personalized to
@@ -40,12 +64,12 @@ State notes:
 2. **Pencil-side debts owed by me** (listed so you don't chase them as site
    bugs): separating the 20 overlapping canvas frames; mirroring the
    cart-CTA/shipping copy removals; the financing-page frame gap; folding the
-   20 authored accordion answers into the design source; today's two /about/
+   20 authored accordion answers into the design source; the two /about/
    changes. Until then, raw re-exports of those pages regress and the build
    re-applies the fixes.
-3. **Naming**: Art designated this session "Ember, HeatCrafter site manager" —
-   now superseded by the 2026-11-16 structure where we're equal partners;
-   the name Ember stays.
+3. **Naming**: Art designated this session "Ember" — as of the 2026-11-16
+   structure we're equal partners; the name Ember stays. Charlie's Claude
+   agent is named "Amber" — similar on purpose, different person and scope.
 4. **Relay protocol**: keep writing to `NOTES-FOR-CLAUDE.md` and
    `REVIEW-FINDINGS.md`; I keep this file updated in return. Art remains the
    decision-maker; disagreements go to him.
