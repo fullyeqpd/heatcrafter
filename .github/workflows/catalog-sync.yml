@@ -1,0 +1,37 @@
+name: Catalog sync
+# Applies fullyeqpd/heatcrafter-products to the site pages.
+# Triggered by the catalog repo after validation passes, or manually.
+# Requires the CATALOG_SYNC_TOKEN secret (fine-grained PAT able to read
+# heatcrafter-products); without it the catalog checkout fails and the
+# run stops harmlessly.
+on:
+  repository_dispatch:
+    types: [catalog-updated]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: catalog-sync
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: fullyeqpd/heatcrafter-products
+          token: ${{ secrets.CATALOG_SYNC_TOKEN }}
+          path: catalog
+      - name: Apply catalog to site pages
+        run: python3 tools/apply-catalog.py --catalog catalog
+      - name: Commit and push if changed
+        run: |
+          rm -rf catalog
+          if git diff --quiet; then
+            echo "Site already matches catalog - nothing to publish."
+            exit 0
+          fi
+          git config user.name "HeatCrafter Catalog Sync"
+          git config user.email "info@heatcrafter.com"
+          git add -A
+          git commit -m "Catalog sync: apply product data from heatcrafter-products"
+          git push
