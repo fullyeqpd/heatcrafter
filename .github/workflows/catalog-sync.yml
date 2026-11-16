@@ -1,12 +1,13 @@
 name: Catalog sync
 # Applies fullyeqpd/heatcrafter-products to the site pages.
-# Triggered by the catalog repo after validation passes, or manually.
-# Requires the CATALOG_SYNC_TOKEN secret (fine-grained PAT able to read
-# heatcrafter-products); without it the catalog checkout fails and the
-# run stops harmlessly.
+# Triggers: dispatch from the catalog repo (instant, needs CATALOG_SYNC_TOKEN
+# there), a 15-minute schedule (tokenless fallback - works once the catalog
+# repo is public), or a manual run.
 on:
   repository_dispatch:
     types: [catalog-updated]
+  schedule:
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: fullyeqpd/heatcrafter-products
-          token: ${{ secrets.CATALOG_SYNC_TOKEN }}
+          token: ${{ secrets.CATALOG_SYNC_TOKEN || github.token }}
           path: catalog
       - name: Apply catalog to site pages
         run: python3 tools/apply-catalog.py --catalog catalog
