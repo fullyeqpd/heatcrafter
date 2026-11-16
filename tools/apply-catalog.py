@@ -51,8 +51,8 @@ def set_anchor_text(html, anchor, new_text, start=0, window=None):
     if not m2 or m2.start() - pos > 2000:
         return html, None
     old = re.sub(r"\s+", " ", m2.group(3)).strip()
-    if old == new_text:
-        return html, old
+    if old == new_text or old.startswith(new_text + " ·"):
+        return html, new_text  # already canonical (suffixed copy is preserved)
     new = m2.group(1) + m2.group(2) + new_text + m2.group(4) + m2.group(5)
     return html[:m2.start()] + new + html[m2.end():], old
 
@@ -109,7 +109,7 @@ def main():
             if not hit:
                 continue
             new_html, old = set_anchor_text(html, "CardPrice", products[hit]["price"]["display"],
-                                            start=m.start(), window=4000)
+                                            start=m.start(), window=6000)
             if old is not None and old != products[hit]["price"]["display"]:
                 drift.append(f"{os.path.relpath(page, args.site)}: card {name!r} {old!r} -> {products[hit]['price']['display']!r}")
             html = new_html
